@@ -1,0 +1,31 @@
+/* Promise.all is a method in JavaScript that takes an array of promises and 
+returns a new promise that fulfills with an array of the fulfilled values of
+ the input promises, in the same order as the promises passed to it. 
+ The resulting promise is rejected if any of the input promises are rejected
+
+ const promise1 = Promise.resolve('A');
+const promise2 = Promise.resolve('B');
+const promise3 = Promise.resolve('C');
+
+Promise.all([promise1, promise2, promise3])
+  .then(values => {
+    console.log(values); // Output: ['A', 'B', 'C']
+  })
+  .catch(error => {
+    console.error(error); // This won't be called in this example
+  });
+
+              Promise.race:
+   This method takes an array of promises and returns a new promise 
+  that fulfills or rejects as soon as one of the input promises fulfills or rejects.
+
+  const promise1 = new Promise(resolve => setTimeout(() => resolve('A'), 1000));
+const promise2 = new Promise(resolve => setTimeout(() => resolve('B'), 500));
+
+Promise.race([promise1, promise2])
+  .then(value => {
+    console.log(value); // Output: 'B' (because promise2 resolves first)
+  })
+  .catch(error => {
+    console.error(error); // This won't be called in this example
+  });
